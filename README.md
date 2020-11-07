@@ -24,12 +24,12 @@ The labels of the classes used, along with the number of provided labels. N deno
 4. 'V':  -- 7129
 5. '/':  -- 7028
 
+![A healthy heart-beat](https://github.com/MLDawn/DRBFDD/blob/main/heartbeat.png)
 
-SAMPLE HEALTHY HEARTBEAT
 
 Obviously, these are the number of labels for each heart-beat and we need to actually extract these heart-beats from the recordings along with these labels. We need to understand the general pattern of a heart-beat to help us come up with a heart-beat extraction strategy. First let's see a sample patient's heart-beat pattern for both channels in this dataset:
 
-SAMPLE MIT HEARTBEAT
+![A Sample Recording of the MIT-BIH Dataset for Both Channels](https://github.com/MLDawn/DRBFDD/blob/main/sample%20recording%20MIT.png)
 
 The little cross signs show where the R peaks in a heart-beat have happened. The dataset provides us with these peak lists for all recordings and all patients. Below, we will cover the multiple pre-processing steps that we have taken for this dataset.
 
