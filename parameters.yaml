@@ -1,0 +1,47 @@
+Dataset:
+  name: "MNIST" # Dataset name: "MNIST", "FMNIST", "ECG"
+  normal: [0] # Normal class: For MNIST/Fashion-MNIST is a list and can be between 0-9 (e.g., [0]) and for ECG has to be 0 and NOT a ist (e.g., 0)
+  anomalous: [1] # Anomalous class: For MNIST/Fashion-MNIST is a list can be between 0-9 (e.g., [1]) and for ECG has to be between 1-4 and NOT a list (e.g., 1)
+
+  path: '' # The path for the ECG data. Set it if necessary
+
+
+Shared:
+  max_epoch: [20] # number of epochs as a list
+  eta: [0.0001] # The learning rate as a list
+  batch_size: 512 # The batchsize
+  sampling_times: 1 # number of sampling times per hyper-parameter combination (default 10)
+  sample_size: 0.80 # The percentage of random samples from the normal class for training
+
+
+
+RBFDD:
+  use_kmeans: True # keep this True so RBFDD could use k-means for initialization
+  mini_batch_kmeans: True # Keep this true so k-means can run faster
+  beta: [0.0001] # the covariance size regularizer coefficient as a list
+  lamda: [0.0001] # the weights regularizer coefficient as a list
+  algorithm: 'RBFDD'
+  hidden_fraction: [0.25] # The number of Gaussian kernels in terms of the proportion of the input dimensionality as a list
+
+
+DeepNetOptions:
+  LeNet: False # Make it True of running D-RBFDD on MNIST/Fashion MNIST and keep the otehr 2 Fals
+  ResNet: False # MAke this True of running Fix-Res + RBFDD or Fine-Res + RBFDD on MNIST/Fashion MNIST and keep the other true False
+  CNN1D: True # Keep this True and the other two False if running D-RBFDD on the MIT-NIH Arrhythmia dataset
+
+CNN1D: # CNN1D will only be used for MIT-BIH Arrhythmia dataset
+  use_kmeans: True
+  mini_batch_kmeans: True
+  pre_rbfdd_input_dim: 84 # FIXED-The dimensionality of the data before it is fed into the RBFDD layer in a D-RBFDD network
+
+
+LeNet: # ONLY used for MNIST/Fashion MNIST datasets
+  use_kmeans: True
+  pre_rbfdd_input_dim: 84 # FIXED-The dimensionality of the data before it is fed into the RBFDD layer in a D-RBFDD network
+
+
+ResNet:
+  use_kmeans: True
+  fine_tune: True # If true, you will be running Fine-Res + RBFDD
+  fine_tune_layers_num: [7] # The index of the block of layers to be fine-tuned in ResNet-18 as a list
+  pre_rbfdd_input_dim: 512 # FIXED-The dimensionality of the data before it is fed into the RBFDD layer in a Fix-Res/Fine-Res + RBFDD network
