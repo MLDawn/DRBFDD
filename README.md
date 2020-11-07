@@ -1,3 +1,15 @@
+# IMPORTANT
+We have 2 separate codes for MNIST/Fashion MNIST and MIT-BIH Arrhytmia datasets: 1) MNIST-DRBFDD.py and 2) ECG-DRBFDD.py
+
+You need to adjust the parameters for the DRBFDD network in the parameters.yaml file.
+
+Read the comments in the .yaml file carefully as given a dataset, you need to change a few things to apply a certain algorithm:
+
+1. For MNIST/Fashion MNIST you can run D-RBFDD network as well as Fix-Res + RBFDD and Fine-Res + RBFDD networks and you will need to run MNIST-DRBFDD.py
+
+2. For MIT-BIH Arrhytmia dataset, you will forcus on the parameters for the CNN1D network in the .yaml file and you will run ECG-DRBFDD.py
+
+
 # DRBFDD
 This repository contains the source code for the Deep Radial Basis Function Data Descriptor (DRBFDD) network.
 The necessary ECG data, have been collected from MIT-BIH dataset, the individual heart-beats have been extracted, normalized between [0,1].
